@@ -1,0 +1,8 @@
+﻿  StatisticalQualityPlaintexts.cpp
+C:\Users\danim\Desktop\remote\6\InformationSecurity\InformationSecurity\InformationSecurity\StatisticalQualityPlaintexts.cpp(3,10): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+C:\Users\danim\Desktop\remote\6\InformationSecurity\InformationSecurity\InformationSecurity\StatisticalQualityPlaintexts.cpp(4,10): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+C:\Users\danim\Desktop\remote\6\InformationSecurity\InformationSecurity\InformationSecurity\StatisticalQualityPlaintexts.cpp(4,10): warning C4067: string_view is only available with C++17 or later.
+C:\Users\danim\Desktop\remote\6\InformationSecurity\InformationSecurity\InformationSecurity\StatisticalQualityPlaintexts.cpp(5,10): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+C:\Users\danim\Desktop\remote\6\InformationSecurity\InformationSecurity\InformationSecurity\StatisticalQualityPlaintexts.cpp(6,10): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+C:\Users\danim\Desktop\remote\6\InformationSecurity\InformationSecurity\InformationSecurity\StatisticalQualityPlaintexts.cpp(7,10): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+  InformationSecurity.vcxproj -> C:\Users\danim\Desktop\remote\6\InformationSecurity\InformationSecurity\Debug\InformationSecurity.exe
