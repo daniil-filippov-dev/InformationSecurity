@@ -1,8 +1,7 @@
-
 let alph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ 1234567890";
 
-let p = 7;
-let q = 13;
+let p = takePrime(100);
+let q = takePrime(100);
 let n = p * q;
 
 let phi = (p - 1) * (q - 1);
@@ -22,7 +21,7 @@ do {
 } while (true);
 
 let isRight = true;
-let data = "Secret message";
+let data = "vrftghry  346635 hyjmn";
 
 data = data.toUpperCase();
 for (let char of data) {
@@ -59,17 +58,4 @@ if (!isRight) {
 		decdata += alph[index -1];
 	}
 	console.log(decdata);
-
-	let div1 = document.createElement('div');
-	div1.className = 'message';
-	//div1.innerHTML = `<p>${cdata.toString()}</p>`;
-	document.append(div1);
-
-	let div2 = document.createElement('div');
-	div2.className = 'message';
-	div2.innerText = 'decdata';
-	document.body.append(div2);
-
-	document.createTextNode(decdata);
-	document.createTextNode(cdata);
-} 
+} 
