@@ -59,4 +59,17 @@ if (!isRight) {
 		decdata += alph[index -1];
 	}
 	console.log(decdata);
+
+	let div1 = document.createElement('div');
+	div1.className = 'message';
+	//div1.innerHTML = `<p>${cdata.toString()}</p>`;
+	document.append(div1);
+
+	let div2 = document.createElement('div');
+	div2.className = 'message';
+	div2.innerText = 'decdata';
+	document.body.append(div2);
+
+	document.createTextNode(decdata);
+	document.createTextNode(cdata);
 } 
