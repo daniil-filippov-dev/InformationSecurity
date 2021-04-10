@@ -1,4 +1,44 @@
-let alph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ 1234567890";
+function getAlphabet() {
+	let str = ' ';
+	function* generateSequence(start, end) {
+		for (let i = start; i <= end; i++ ) yield i;
+	}
+	function* generateAlphabetCodes() {
+		// A..Z
+		yield* generateSequence(65, 90);
+		// 0..9
+		yield*  generateSequence(48, 57);
+		// a..z
+		//yield* generateSequence(97, 122);
+	}
+	
+	for (let code of generateAlphabetCodes()) {
+		str += String.fromCharCode(code);
+	}
+	return str;
+}
+function isPrime(num) {
+	if (num <= 1) {
+		return false;
+	}
+	for (i = 2; i*i <= num; i++) {
+		if (num % i == 0) {
+			return false;
+		}
+	}
+	return true;
+}
+function takePrime(max) {
+	while(true) {
+		let num = Math.floor(Math.random() * max);
+		if (isPrime(num)) {
+			return num;
+		}
+	}
+}
+
+let alphabet = getAlphabet();
+
 
 let p = takePrime(100);
 let q = takePrime(100);
@@ -21,11 +61,11 @@ do {
 } while (true);
 
 let isRight = true;
-let data = "vrftghry  346635 hyjmn";
+let data = "123 lol sda asdasd asd";
 
 data = data.toUpperCase();
 for (let char of data) {
-	if (alph.indexOf(char) == -1) {
+	if (alphabet.indexOf(char) == -1) {
 		isRight = false;
 		break;
 	}
@@ -38,7 +78,7 @@ if (!isRight) {
 
 	for (let i = 0; i < data.length; i++) {
 		cdata.push(1);
-		index = alph.indexOf(data[i]) + 1;
+		index = alphabet.indexOf(data[i]) + 1;
 		for (let j = 0; j < e; j++) {
 			cdata[i] *= index;
 			cdata[i] %= n;
@@ -55,7 +95,7 @@ if (!isRight) {
 			index *= cdata[i];
 			index %= n;
 		}
-		decdata += alph[index -1];
+		decdata += alphabet[index -1];
 	}
 	console.log(decdata);
 } 
