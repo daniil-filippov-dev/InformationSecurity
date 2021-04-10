@@ -37,6 +37,32 @@ function takePrime(max) {
 	}
 }
 
+function code(data, n, e) {
+	let cdata = [];
+
+	for (let i = 0; i < data.length; i++) {
+		cdata.push(1);
+		index = alphabet.indexOf(data[i]) + 1;
+		for (let j = 0; j < e; j++) {
+			cdata[i] *= index;
+			cdata[i] %= n;
+		}
+	}
+	return cdata;
+}
+function decode(cdata, n, d) {
+	let decdata = '';
+
+	for (let i = 0; i < cdata.length; i++) {
+		let index = 1;
+		for (let j = 0; j < d; j++ ) {
+			index *= cdata[i];
+			index %= n;
+		}
+		decdata += alphabet[index - 1];
+	}
+	return decdata;
+}
 let alphabet = getAlphabet();
 
 
@@ -61,8 +87,8 @@ do {
 } while (true);
 
 let isRight = true;
-let data = "123 lol sda asdasd asd";
-
+let data = "123 lol sda asdasd";
+console.log(data.length);
 data = data.toUpperCase();
 for (let char of data) {
 	if (alphabet.indexOf(char) == -1) {
@@ -74,28 +100,9 @@ for (let char of data) {
 if (!isRight) {
 	console.log('No such char in alphabite');
 } else {
-	let cdata = [];
-
-	for (let i = 0; i < data.length; i++) {
-		cdata.push(1);
-		index = alphabet.indexOf(data[i]) + 1;
-		for (let j = 0; j < e; j++) {
-			cdata[i] *= index;
-			cdata[i] %= n;
-		}
-	}
-
+	let cdata = code(data, n, e);
 	console.log(cdata);
 	
-	let decdata = '';
-
-	for (let i = 0; i < data.length; i++) {
-		let index = 1;
-		for (let j = 0; j < d; j++ ) {
-			index *= cdata[i];
-			index %= n;
-		}
-		decdata += alphabet[index -1];
-	}
+	let decdata = decode(cdata, n, d);
 	console.log(decdata);
 } 
