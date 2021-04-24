@@ -1,6 +1,6 @@
-const bmp = require("bmp-js"),
-	fs = require('fs'),
-	MainBytes = 54;
+import { decode } from "bmp-js";
+import { readFileSync, writeFileSync } from 'fs';
+const MainBytes = 54;
 
 
 function* generateImageBMP(start, end) {
@@ -15,8 +15,8 @@ function getArrayImage() {
 }
 
 function getBytesBufferFromBMP(imgUrl) {
-	const bmpBuffer = fs.readFileSync(imgUrl);
-		bmpData = bmp.decode(bmpBuffer),
+	const bmpBuffer = readFileSync(imgUrl);
+		bmpData = decode(bmpBuffer),
 		bytes = [...bmpBuffer];
 	return bytes;
 }
@@ -52,7 +52,7 @@ function unpack(str) {
 
 function encodeText(imgURL, textURL) {
 	const imageArrayBytes = getBytesBufferFromBMP(imgURL),
-		encodeTextBytes = fs.readFileSync(textURL, "utf8"),
+		encodeTextBytes = readFileSync(textURL, "utf8"),
 		text = [...unpack(encodeTextBytes), 0xFF];
 
 	for (let i = MainBytes, j = 0; i < MainBytes + text.length * 4; i += 4, j++) {
@@ -66,19 +66,19 @@ function encodeText(imgURL, textURL) {
 		imageArrayBytes[i + 3] |= ((text[j]) & 0x3);
 	}
 	
-	fs.writeFileSync(`./result/imageTask2.bmp`, new Buffer.from(imageArrayBytes));
+	writeFileSync(`./result/imageTask2.bmp`, new Buffer.from(imageArrayBytes));
 	console.log('File task 2 written successfully\n');
 }
 
 getArrayImage().forEach( (item, i) => {
-	fs.writeFileSync(`./result/image${i + 1}.txt`, decodeImgFromURL(item));
+	writeFileSync(`./result/image${i + 1}.txt`, decodeImgFromURL(item));
 	console.log('File written successfully\n');
 	console.log("The written has the following contents:");
-	console.log(fs.readFileSync(`./result/image${i + 1}.txt`, "utf8"));
+	console.log(readFileSync(`./result/image${i + 1}.txt`, "utf8"));
 })
 
 const imgURL = './task2/task2test.bmp',
 	textURL = './task2/task2text.txt';
 encodeText(imgURL, textURL);
-fs.writeFileSync(`./result/imagetask2.txt`, decodeImgFromURL('./result/imageTask2.bmp'));
-console.log(fs.readFileSync(`./result/imagetask2.txt`, "utf8"));
+writeFileSync(`./result/imagetask2.txt`, decodeImgFromURL('./result/imageTask2.bmp'));
+console.log(readFileSync(`./result/imagetask2.txt`, "utf8"));
